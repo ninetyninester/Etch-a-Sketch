@@ -1,0 +1,10 @@
+#container{
+    display: flex;
+}
+
+.square{
+    box-sizing: border-box;
+    height: 60px;
+    width: 60px;
+    border: 1px solid gray;
+}
