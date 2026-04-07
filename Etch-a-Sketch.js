@@ -32,20 +32,6 @@ for (let i = 1; i <= 16; i++){
         }
     })
 
-    // square.addEventListener("mousedown", (e) => {
-    //     if(e.button == 2){
-    //     e.preventDefault();
-    //     square.style.backgroundColor = "white";
-    //     }
-    // })
-
-    // square.addEventListener("mouseover", (e) => {
-    //     if(mouseTrigger && e.button == 2){
-    //     e.preventDefault();
-    //     square.style.backgroundColor = "white";
-    //     }
-    // })
-
     line.appendChild(square);
     }
 }
