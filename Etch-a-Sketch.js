@@ -16,11 +16,6 @@ gridBox.addEventListener("click", () => {
     gridCall();
 })
 
-let gridSize = document.createElement("input");
-gridSize.classList.add("gridSize");
-gridSize.type = "number";
-gridSize.value = 64;
-
 let container = document.createElement("div");
 container.id = "container";
 document.body.appendChild(container);
@@ -34,6 +29,8 @@ document.addEventListener("mousedown", () => {
 document.addEventListener("mouseup", () => {
     mouseTrigger = false;
 })
+
+let size = 32;
 
 function creatGrid (size){
 
@@ -66,13 +63,17 @@ function creatGrid (size){
     }
 }
 
-creatGrid(Number(gridSize.value));
+let currentSize = size;
+
+creatGrid(Number(size));
 
 function gridCall(){
-    let size = Number(prompt("Enter grid size (max 128):", 64));
+    let size = Number(prompt("Enter grid size (max 128):", currentSize));
 
-    if (isNaN(size) || size < 1) size = 64;
+    if (isNaN(size) || size < 1) size = 32;
     if (size > 128) size = 128;
+
+    currentSize = size;
 
     creatGrid(size);
 }
