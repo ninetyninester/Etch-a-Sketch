@@ -1,6 +1,30 @@
+let intro = document.createElement("div");
+intro.classList.add("intro");
+intro.textContent = "Welcome to ETCH-A-SKETCH!"
+document.body.appendChild(intro);
+
+let subtitle = document.createElement("div");
+subtitle.classList.add("subtitle");
+subtitle.textContent = "Select a grid size and start to draw!"
+document.body.appendChild(subtitle);
+
+let gridBox = document.createElement("button");
+gridBox.classList.add("gridBox");
+gridBox.textContent = "Select squares per grid's side"
+document.body.appendChild(gridBox);
+gridBox.addEventListener("click", () => {
+    gridCall();
+})
+
+let gridSize = document.createElement("input");
+gridSize.classList.add("gridSize");
+gridSize.type = "number";
+gridSize.value = 64;
+
 let container = document.createElement("div");
 container.id = "container";
 document.body.appendChild(container);
+
 
 let mouseTrigger;
 document.addEventListener("mousedown", () => {
@@ -10,12 +34,6 @@ document.addEventListener("mousedown", () => {
 document.addEventListener("mouseup", () => {
     mouseTrigger = false;
 })
-
-let gridSize = document.createElement("input");
-gridSize.classList.add("gridSize");
-gridSize.type = "number";
-document.body.appendChild(gridSize);
-gridSize.value = 16;
 
 function creatGrid (size){
 
@@ -50,6 +68,11 @@ function creatGrid (size){
 
 creatGrid(Number(gridSize.value));
 
-gridSize.addEventListener("change", () => {
-    creatGrid(Number(gridSize.value));
-});
+function gridCall(){
+    let size = Number(prompt("Enter grid size (max 128):", 64));
+
+    if (isNaN(size) || size < 1) size = 64;
+    if (size > 128) size = 128;
+
+    creatGrid(size);
+}

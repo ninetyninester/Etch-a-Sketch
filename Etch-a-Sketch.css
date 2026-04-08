@@ -1,13 +1,37 @@
+@font-face {
+    font-family: 'comic-relief';
+    src: url(ComicRelief.ttf);
+}
+
 body{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: 'comic-relief';
+}
+
+.gridBox{
+    font-family: 'comic-relief';
+    font-size: 20px;
+    padding: 10px;
+    background-color: burlywood;
 }
 
 .grid{
     display: flex;
 
+}
+
+.gridSize{
+    height: 40px;
+    width: 80px;
+    text-align: center;
+    font-size: 22px;
+    color: blue;
+    padding: 5px;
+    border: 4px solid black;
+    margin: 20px
 }
 
 #container{
@@ -17,6 +41,7 @@ body{
     height: 960px;
     width: 960px;
     border: 4px solid black;
+    margin: 15px;
 }
 
 .line{
@@ -28,4 +53,16 @@ body{
     display: flex;
     flex: 1;
     border: 1px solid gray;
+}
+
+.intro{
+    font-size: 30px;
+    padding: 10px;
+    padding-bottom: 5px;
+}
+
+.subtitle{
+    font-size: 22px;
+    padding: 20px;
+    padding-top: 10px;
 }
