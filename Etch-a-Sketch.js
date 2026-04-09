@@ -1,3 +1,5 @@
+document.body.style.userSelect = "none";
+
 let intro = document.createElement("div");
 intro.classList.add("intro");
 intro.textContent = "Welcome to ETCH-A-SKETCH!"
@@ -16,12 +18,7 @@ gridBox.addEventListener("click", () => {
     gridCall();
 })
 
-let container = document.createElement("div");
-container.id = "container";
-document.body.appendChild(container);
-
-
-let mouseTrigger;
+let mouseTrigger = false;
 document.addEventListener("mousedown", () => {
     mouseTrigger = true;
 })
@@ -29,6 +26,20 @@ document.addEventListener("mousedown", () => {
 document.addEventListener("mouseup", () => {
     mouseTrigger = false;
 })
+
+let container = document.createElement("div");
+container.id = "container";
+document.body.appendChild(container);
+
+container.addEventListener("mousedown", (e) => {
+    e.target.style.backgroundColor = "blue";
+});
+
+container.addEventListener("mouseover", (e) => {
+    if (mouseTrigger && e.target.classList.contains("square")) {
+        e.target.style.backgroundColor = "blue";
+    }
+});
 
 let size = 32;
 
@@ -43,22 +54,9 @@ function creatGrid (size){
         container.appendChild(line);
 
         for (let j = 1; j <= size; j++) {
-        let square = document.createElement("div");
-        square.classList.add("square");
-
-        square.addEventListener("mousedown", (e) => {
-            e.preventDefault();
-            square.style.backgroundColor = "blue";
-            })
-
-        square.addEventListener("mouseover", (e) => {
-            if(mouseTrigger){
-            e.preventDefault();
-            square.style.backgroundColor = "blue";
-            }
-        })
-
-        line.appendChild(square);
+            let square = document.createElement("div");
+            square.classList.add("square");
+            line.appendChild(square);
         }
     }
 }
@@ -70,7 +68,7 @@ creatGrid(Number(size));
 function gridCall(){
     let size = Number(prompt("Enter grid size (max 128):", currentSize));
 
-    if (isNaN(size) || size < 1) size = 32;
+    if (isNaN(size) || size < 1) size = currentSize;
     if (size > 128) size = 128;
 
     currentSize = size;
